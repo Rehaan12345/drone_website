@@ -6,23 +6,32 @@
   import { onMount } from "svelte";
   import { fade, blur, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  // import db from "../firebase"
 
   // Intersection Obvserver functionality: (source: https://www.youtube.com/watch?v=T33NN_pPeNI)
   let ready = false;
   onMount(() => {
+    // console.log(db);
+
     ready = true;
 
-    const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log(entry.target);
           entry.target.classList.add("show");
           entry.target.classList.remove("hiddensec");
-        } else { entry.target.classList.remove("show"); entry.target.classList.add("hiddensec"); }
+        } else { 
+          entry.target.classList.remove("show"); 
+          entry.target.classList.add("hiddensec"); 
+        }
       });
     });
+    const hiddenElements = document.querySelectorAll(".hiddensec");
+    hiddenElements.forEach((el) => observer.observe(el));
   });
-  
+
+
 </script>
 
 <style>
@@ -41,7 +50,14 @@
   transition: all 5s;
 }
 
+.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 </style>
+
+<div class="show"></div>
 
 {#if ready}
 

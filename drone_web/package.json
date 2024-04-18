@@ -1,5 +1,5 @@
 {
-  "name": "drone-web",
+  "name": "drone_web",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -28,6 +28,7 @@
   },
   "type": "module",
   "dependencies": {
+    "firebase": "^10.11.0",
     "svelte-inview": "^4.0.2",
     "svelte-transition": "^0.0.10"
   }
