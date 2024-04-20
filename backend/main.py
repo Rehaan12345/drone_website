@@ -6,8 +6,10 @@ app = FastAPI()
 # CORS Documentation: https://fastapi.tiangolo.com/tutorial/cors/
 
 origins = [
-    "http://127.0.0.1:5173/",
-    "http://127.0.0.1:8000/"
+    "http://localhost:5173",
+    "http://127.0.0.1:8000",
+    "http://localhost",
+    "http://localhost:8080"
 ]
 
 app.add_middleware(
@@ -20,6 +22,6 @@ app.add_middleware(
 
 # uvicorn main:app --reload
 
-@app.get("/")
+@app.get("/data")
 async def home():
     return {"message": "Hello Rehaan"}

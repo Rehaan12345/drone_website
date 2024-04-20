@@ -15,8 +15,8 @@
 
     ready = true;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log(entry.target);
           entry.target.classList.add("show");
@@ -27,6 +27,7 @@
         }
       });
     });
+
     const hiddenElements = document.querySelectorAll(".hiddensec");
     hiddenElements.forEach((el) => observer.observe(el));
   });
@@ -70,16 +71,16 @@
           <div class="part parttwo" transition:fly={{ delay: 500, duration: 800, x: -1000, y: 0, opacity: 0, easing: quintOut }}>drone footage for </div>
           <Span underline decorationClass="decoration-8 decoration-orange-400 dark:decoration-orange-600"><div class="part partthree" transition:fly={{ delay: 700, duration: 800, x: 1000, y: 0, opacity: 0, easing: quintOut }}>every project.</div></Span> 
         </Heading>
-        <P><center transition:blur={{ delay: 800, duration: 600, amount: 10 }}>Beantown drones combines high-quality aerial photo and video with a customized portfolio for every client, tailor made to fit your goal.</center></P>
+        <P><center transition:blur={{ delay: 900, duration: 600, amount: 10 }}>Beantown drones combines high-quality aerial photo and video with a customized portfolio for every client, tailor made to fit your goal.</center></P>
         <br>
-        <div class="part partfour" transition:fly={{ delay: 900, duration: 800, x: 0, y: 500, opacity: 0, easing: quintOut }}><Button href="/#section1">Scroll Down</Button></div>
+        <div class="part partfour" transition:fly={{ delay: 1000, duration: 800, x: 0, y: 500, opacity: 0, easing: quintOut }}><Button href="/#section1">Explore</Button></div>
       </div>
     </div>
   </div>
 	
 {/if}
 
-<section out:blur={{ duration: 400 }} in:blur={{ delay: 400, duration: 400 }} class="sectionsok" id="section1">
+<section transition:blur={{ delay: 500, duration: 400, opacity: 0 }} class="sectionsok" id="section1">
   <Heading>Section 1</Heading>
 </section>
 

@@ -1,7 +1,8 @@
 <script>
   import { Heading } from "flowbite-svelte";
 
-  let apiResults, URL = "http://127.0.0.1:8000/"
+  let apiResults, URL = "http://127.0.0.1:8000/data"
+  // This one works: https://api.themoviedb.org/3/trending/tv/week/
 
   const getApiAsync = (URL) => {
     fetch(URL)

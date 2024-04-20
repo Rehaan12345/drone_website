@@ -31,6 +31,7 @@
       <NavLi href="/">Home</NavLi>
       <NavLi href="/Pricing">Pricing</NavLi>
       <NavLi href="/Contact">Contact</NavLi>
+      <NavLi href="/Login">Login</NavLi>
     </NavUl>
   </Navbar>
 
