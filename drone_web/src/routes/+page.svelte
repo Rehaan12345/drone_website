@@ -1,11 +1,20 @@
 <script>
-  import { Carousel } from 'flowbite-svelte';
   import { Heading, P, Button, Mark, Span } from 'flowbite-svelte';
   import { ArrowRightOutline } from 'flowbite-svelte-icons';
   import { Gallery } from 'flowbite-svelte';
   import { onMount } from "svelte";
   import { fade, blur, fly } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { Carousel, Thumbnails } from 'flowbite-svelte';
+  import { CldUploadWidget } from 'svelte-cloudinary';
+  import { vimeo } from "vimeo";
+  // import images from "/imageData/images.json";
+
+  // import images from './imageData/images.json';
+
+  let index = 0;
+  let forward = true; // sync animation direction between Thumbnails and Carousel
+
   // import db from "../firebase"
 
   // Intersection Obvserver functionality: (source: https://www.youtube.com/watch?v=T33NN_pPeNI)
@@ -32,6 +41,19 @@
     hiddenElements.forEach((el) => observer.observe(el));
   });
 
+  let Vimeo = require('vimeo').Vimeo;
+  let client = new Vimeo("fb93e2b9ae86ab4b78ff357ab3c3bbf33121e389", "9no7IJ2dXvE3oiN1TwxecAqu+2gjXw75oFurkDPeu4xbT+XVDdDuOF4ijWfDeaX3QKbskzhNruGxsnvr9BZKdfVVTyyB/GtgGLOpoOqWOBwo1TgdSE/HXhxkxTgcUFrV", "ae62ce47d0ad85e2deb5ae81d9fcd11e");
+
+  client.request({
+    method: 'GET',
+    path: '/'
+  }, function (error, body, status_code, headers) {
+    if (error) {
+      console.log(error);
+    }
+
+    console.log(body);
+  })
 
 </script>
 
@@ -60,6 +82,16 @@
 
 <div class="show"></div>
 
+<!-- <div class="max-w-4xl space-y-4">
+  <Carousel {images} {forward} let:Indicators let:Controls bind:index>
+    <Controls />
+    <Indicators />
+  </Carousel>
+  <Thumbnails {images} {forward} bind:index />
+</div> -->
+
+<!-- <enhanced:img src="../lib/images/Pic1.png" alt="firstpic" /> -->
+
 {#if ready}
 
   <div class="hero min-h-screen">
@@ -77,7 +109,8 @@
       </div>
     </div>
   </div>
-	
+{:else}
+  <span class="loading loading-infinity loading-lg"></span>
 {/if}
 
 <section transition:blur={{ delay: 500, duration: 400, opacity: 0 }} class="sectionsok" id="section1">

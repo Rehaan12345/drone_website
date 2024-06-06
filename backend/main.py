@@ -1,9 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from collections.abc import MutableMapping
+from _collections_abc import Mapping
+from _collections_abc import MutableMapping
+from _collections_abc import Sequence
 
 app = FastAPI()
 
 # CORS Documentation: https://fastapi.tiangolo.com/tutorial/cors/
+
+# Virtual environment: python3 -m venv venv
 
 origins = [
     "http://localhost:5173",
@@ -22,6 +28,17 @@ app.add_middleware(
 
 # uvicorn main:app --reload
 
+@app.get("/")
+def ok():
+    return {"data": "hello rehaan"}
+
 @app.get("/data")
 async def home():
     return {"message": "Hello Rehaan"}
+
+@app.get("/login/{email}/{password}")
+async def login(email: str, password: str):
+    # print(f"Email: {email}\nPassword: {password}")
+    return {"email": email, "password": password}
+
+print("OK")
