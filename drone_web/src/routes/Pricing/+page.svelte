@@ -1,6 +1,6 @@
 <script>
   import { Heading } from "flowbite-svelte";
-  import images from './imageData/images.json';
+  // import images from './imageData/images.json';
   import { Carousel, Thumbnails } from 'flowbite-svelte';
 
   let index = 0;
@@ -25,7 +25,6 @@
 
 <main>
   <button on:click={ handleClick }>GetAPI</button>
-  
   <div class="response">{apiResults ? JSON.stringify(apiResults, null, 2) : ""}</div>
 </main>
 <!-- 

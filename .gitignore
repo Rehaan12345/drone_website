@@ -2,3 +2,4 @@ __pycache__/
 path/
 venv/
 .venv/
+new_venv/

@@ -46,6 +46,9 @@
         <Input id="password" name="password" placeholder="123456789" class="inputs"/> 
         <br>
         <Button type="submit">Sign Up</Button>
+    </form><br><br>
+    <form class="paynow">
+        <Button type="submit">Pay Now</Button>
     </form>
 </div>
 

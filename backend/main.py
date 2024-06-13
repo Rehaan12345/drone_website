@@ -1,15 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from collections.abc import MutableMapping
-from _collections_abc import Mapping
-from _collections_abc import MutableMapping
-from _collections_abc import Sequence
 
 app = FastAPI()
 
 # CORS Documentation: https://fastapi.tiangolo.com/tutorial/cors/
 
-# Virtual environment: python3 -m venv venv
+# Create virtual environment: python3 -m venv venv
 
 origins = [
     "http://localhost:5173",

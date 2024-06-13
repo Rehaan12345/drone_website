@@ -7,7 +7,7 @@
   import { quintOut } from 'svelte/easing';
   import { Carousel, Thumbnails } from 'flowbite-svelte';
   import { CldUploadWidget } from 'svelte-cloudinary';
-  import { vimeo } from "vimeo";
+  // import { vimeo } from "vimeo";
   // import images from "/imageData/images.json";
 
   // import images from './imageData/images.json';
@@ -41,19 +41,19 @@
     hiddenElements.forEach((el) => observer.observe(el));
   });
 
-  let Vimeo = require('vimeo').Vimeo;
-  let client = new Vimeo("fb93e2b9ae86ab4b78ff357ab3c3bbf33121e389", "9no7IJ2dXvE3oiN1TwxecAqu+2gjXw75oFurkDPeu4xbT+XVDdDuOF4ijWfDeaX3QKbskzhNruGxsnvr9BZKdfVVTyyB/GtgGLOpoOqWOBwo1TgdSE/HXhxkxTgcUFrV", "ae62ce47d0ad85e2deb5ae81d9fcd11e");
+  // let Vimeo = require('vimeo').Vimeo;
+  // let client = new Vimeo("fb93e2b9ae86ab4b78ff357ab3c3bbf33121e389", "9no7IJ2dXvE3oiN1TwxecAqu+2gjXw75oFurkDPeu4xbT+XVDdDuOF4ijWfDeaX3QKbskzhNruGxsnvr9BZKdfVVTyyB/GtgGLOpoOqWOBwo1TgdSE/HXhxkxTgcUFrV", "ae62ce47d0ad85e2deb5ae81d9fcd11e");
 
-  client.request({
-    method: 'GET',
-    path: '/'
-  }, function (error, body, status_code, headers) {
-    if (error) {
-      console.log(error);
-    }
+  // client.request({
+  //   method: 'GET',
+  //   path: '/'
+  // }, function (error, body, status_code, headers) {
+  //   if (error) {
+  //     console.log(error);
+  //   }
 
-    console.log(body);
-  })
+  //   console.log(body);
+  // })
 
 </script>
 
