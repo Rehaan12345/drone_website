@@ -7,10 +7,33 @@
   import { quintOut } from 'svelte/easing';
   import { Carousel, Thumbnails } from 'flowbite-svelte';
   import { CldUploadWidget } from 'svelte-cloudinary';
+  import { BadgeCheckOutline } from "flowbite-svelte-icons";
+  import Contact from "./Contact.svelte";
+ 
   // import { vimeo } from "vimeo";
   // import images from "/imageData/images.json";
 
   // import images from './imageData/images.json';
+
+  let email;
+    let password;
+
+    async function sendLoginInfo(email, password) {
+      try {
+          const url = "http://localhost:8000/login/" + email + "/" + password;
+          const res = await fetch(url);
+          if (!res.ok) {
+              throw new Error("Login fetching didn't work");
+          }
+          const resData = await res.json();
+          email = resData["email"];
+          console.log("Email: " + email);
+          password = resData["password"];
+          console.log("Password: " + password);
+      } catch (error) {
+          console.log("Error retrieving login info: ", error);
+      }
+    }
 
   let index = 0;
   let forward = true; // sync animation direction between Thumbnails and Carousel
@@ -60,10 +83,11 @@
 <style>
 
 .sectionsok  {
-  min-height: 100vh;
+  min-height: 90vh;
   color: white;
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hiddensec {
@@ -78,19 +102,28 @@
   transform: translateX(0);
 }
 
+.sectioncontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionheadingwrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10rem;
+  margin-left: 10rem;
+}
+
+.sectioninfotext {
+  margin-right: 20rem;
+  display: flex;
+}
+
 </style>
 
 <div class="show"></div>
-
-<!-- <div class="max-w-4xl space-y-4">
-  <Carousel {images} {forward} let:Indicators let:Controls bind:index>
-    <Controls />
-    <Indicators />
-  </Carousel>
-  <Thumbnails {images} {forward} bind:index />
-</div> -->
-
-<!-- <enhanced:img src="../lib/images/Pic1.png" alt="firstpic" /> -->
 
 {#if ready}
 
@@ -98,12 +131,15 @@
     <div class="hero-overlay bg-opacity-30"></div>
     <div class="hero-content text-center text-neutral-content">
       <div class="max-w-md">
-        <Heading tag="h1" class="mb-4">
+        <Heading>
+          Making your aerial dreams come true!
+        </Heading>
+        <!-- <Heading tag="h1" class="mb-4">
           <Span underline decorationClass="decoration-8 decoration-orange-400 dark:decoration-orange-600"><div class="part partone" transition:fly={{ delay: 0, duration: 800, x: 0, y: -500, opacity: 0, easing: quintOut }}>Custom</div></Span> 
           <div class="part parttwo" transition:fly={{ delay: 500, duration: 800, x: -1000, y: 0, opacity: 0, easing: quintOut }}>drone footage for </div>
           <Span underline decorationClass="decoration-8 decoration-orange-400 dark:decoration-orange-600"><div class="part partthree" transition:fly={{ delay: 700, duration: 800, x: 1000, y: 0, opacity: 0, easing: quintOut }}>every project.</div></Span> 
         </Heading>
-        <P><center transition:blur={{ delay: 900, duration: 600, amount: 10 }}>Beantown drones combines high-quality aerial photo and video with a customized portfolio for every client, tailor made to fit your goal.</center></P>
+        <P><center transition:blur={{ delay: 900, duration: 600, amount: 10 }}>Beantown drones combines high-quality aerial photo and video with a customized portfolio for every client, tailor made to fit your goal.</center></P> -->
         <br>
         <div class="part partfour" transition:fly={{ delay: 1000, duration: 800, x: 0, y: 500, opacity: 0, easing: quintOut }}><Button href="/#section1">Explore</Button></div>
       </div>
@@ -114,9 +150,37 @@
 {/if}
 
 <section transition:blur={{ delay: 500, duration: 400, opacity: 0 }} class="sectionsok" id="section1">
-  <Heading>Section 1</Heading>
+  <div class="sectioncontent">
+    <div class="sectionheadingwrapper">
+      <Heading>Who are we?</Heading>
+    </div>
+    <!-- Add picture of both of us here below: -->
+     <div class="sectioninfowrapper" id="section1info">
+      <p class="sectioninfotext">
+        <BadgeCheckOutline></BadgeCheckOutline> We are two drone pilots with over 4 years of piloting experience, looking to break into the world of commercial filming. Both FAA certified, with the Part 107 license, we film, edit, and publish high quality, custom projects for every customer.
+      </p>
+      <p class="sectioninfotext">
+        <BadgeCheckOutline></BadgeCheckOutline> We work with care, integrity, and maturity, ensuring everything we deliver to the client represents the best that we can offer, and then some.
+      </p>
+     </div>
+  </div>
 </section>
 
 <section class="sectionsok hiddensec" id="section2">
-  <Heading>Section 2</Heading>
+  <div class="sectioncontent">
+    <div class="sectionheadingwrapper">
+      <Heading>Media</Heading>
+    </div>
+    <div class="sectioninfowrapper" id="section2info">
+      <p class="sectioninfotext">
+        <BadgeCheckOutline class="checkmark">OKK</BadgeCheckOutline> Scroll through our media! We have over 200 hours of collective footage, ranging from beautiful scenery of the Charles River, down to professional-grade real estate photography. All shot by drones!
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sectionsok" id="section3">
+  <div class="sectioncontent">
+    <Contact></Contact>
+  </div>
 </section>

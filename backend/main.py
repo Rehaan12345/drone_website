@@ -37,4 +37,6 @@ async def login(email: str, password: str):
     # print(f"Email: {email}\nPassword: {password}")
     return {"email": email, "password": password}
 
-print("OK")
+# @app.get("/email/{email_sender}/{email_password}/{email_receiver}/{subject}/{body}/")
+
+# print("OK")

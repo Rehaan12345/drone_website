@@ -24,14 +24,14 @@
 <Navbar let:NavContainer color="primary">
     <NavBrand href="/">
       <DarkMode />
-      <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Drone Works</span>
+      <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">DroneWorks</span>
     </NavBrand>
     <NavHamburger />
     <NavUl {activeUrl}>
       <NavLi href="/">Home</NavLi>
-      <NavLi href="/Pricing">Pricing</NavLi>
+      <!-- <NavLi href="/Pricing">Pricing</NavLi>
       <NavLi href="/Purchase">Purchase</NavLi>
-      <NavLi href="/Signup">Sign Up</NavLi>
+      <NavLi href="/Signup">Sign Up</NavLi> -->
     </NavUl>
   </Navbar>
 
