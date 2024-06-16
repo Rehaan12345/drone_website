@@ -29,8 +29,8 @@
     <NavHamburger />
     <NavUl {activeUrl}>
       <NavLi href="/">Home</NavLi>
-      <!-- <NavLi href="/Pricing">Pricing</NavLi>
-      <NavLi href="/Purchase">Purchase</NavLi>
+      <!-- <NavLi href="/Pricing">Pricing</NavLi> -->
+      <!-- <NavLi href="/Purchase">Purchase</NavLi>
       <NavLi href="/Signup">Sign Up</NavLi> -->
     </NavUl>
   </Navbar>

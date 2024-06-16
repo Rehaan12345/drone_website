@@ -9,8 +9,14 @@ from email.mime.text import MIMEText
 # login = "crlsclubfinder@gmail.com"
 # password = "wmzhhaxtzqnvyuze"
 
+# It will send a copy of the whole email (including subject & body) to BOTH droneworks@bosdroneworks.com AND the person who sent the the email, from the name droneworks@bosdroneworks.com.
+
+# Practice with crlsclubfinder@gmail.com:
+
 # Normal email sending:
-def send_mail(email_sender, email_password, email_receiver, subject, body):
+def send_mail(email_sender, subject, body):
+    email_receiver = "crlsclubfinder@gmail.com"
+    email_password = "wmzhhaxtzqnvyuze"
     em = EmailMessage()
     em['From'] = email_sender
     em['To'] = email_receiver
@@ -22,8 +28,8 @@ def send_mail(email_sender, email_password, email_receiver, subject, body):
 
     # Log in and send the email
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-        smtp.login(email_sender, email_password)
-        smtp.sendmail(email_sender, email_receiver, em.as_string())
+        smtp.login(email_receiver, email_password)
+        smtp.sendmail(email_receiver, email_sender, em.as_string())
 
 # Email sending with embedded HTML:
 def send_alt_mail(email_sender, email_password, email_receiver, subject, text, html):

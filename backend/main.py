@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+# from sendmail import send_mail, send_alt_mail
 
 app = FastAPI()
 
@@ -37,6 +38,11 @@ async def login(email: str, password: str):
     # print(f"Email: {email}\nPassword: {password}")
     return {"email": email, "password": password}
 
-# @app.get("/email/{email_sender}/{email_password}/{email_receiver}/{subject}/{body}/")
-
-# print("OK")
+# @app.get("/email/{email_sender}/{subject}/{body}/")
+# async def email(email_sender: str, subject: str, body: str):
+#     # Send the email:
+#     try:
+#         send_mail(email_sender=email_sender, subject=subject, body=body)
+#         return {"email_sender": email_sender, "subject": subject, "body": body, "worked": "worked!"}
+#     except Exception as e: 
+#         return {"email_sender": email_sender, "subject": subject, "body": body, "worked": str(e)}

@@ -7,33 +7,13 @@
   import { quintOut } from 'svelte/easing';
   import { Carousel, Thumbnails } from 'flowbite-svelte';
   import { CldUploadWidget } from 'svelte-cloudinary';
-  import { BadgeCheckOutline } from "flowbite-svelte-icons";
+  import { BadgeCheckOutline, EnvelopeSolid } from "flowbite-svelte-icons";
   import Contact from "./Contact.svelte";
  
   // import { vimeo } from "vimeo";
   // import images from "/imageData/images.json";
 
   // import images from './imageData/images.json';
-
-  let email;
-    let password;
-
-    async function sendLoginInfo(email, password) {
-      try {
-          const url = "http://localhost:8000/login/" + email + "/" + password;
-          const res = await fetch(url);
-          if (!res.ok) {
-              throw new Error("Login fetching didn't work");
-          }
-          const resData = await res.json();
-          email = resData["email"];
-          console.log("Email: " + email);
-          password = resData["password"];
-          console.log("Password: " + password);
-      } catch (error) {
-          console.log("Error retrieving login info: ", error);
-      }
-    }
 
   let index = 0;
   let forward = true; // sync animation direction between Thumbnails and Carousel
@@ -132,7 +112,13 @@
     <div class="hero-content text-center text-neutral-content">
       <div class="max-w-md">
         <Heading>
-          Making your aerial dreams come true!
+          Making your
+        </Heading>
+        <Heading>
+          aerial dreams
+        </Heading>
+        <Heading>
+          come true!
         </Heading>
         <!-- <Heading tag="h1" class="mb-4">
           <Span underline decorationClass="decoration-8 decoration-orange-400 dark:decoration-orange-600"><div class="part partone" transition:fly={{ delay: 0, duration: 800, x: 0, y: -500, opacity: 0, easing: quintOut }}>Custom</div></Span> 
@@ -157,10 +143,10 @@
     <!-- Add picture of both of us here below: -->
      <div class="sectioninfowrapper" id="section1info">
       <p class="sectioninfotext">
-        <BadgeCheckOutline></BadgeCheckOutline> We are two drone pilots with over 4 years of piloting experience, looking to break into the world of commercial filming. Both FAA certified, with the Part 107 license, we film, edit, and publish high quality, custom projects for every customer.
+        <BadgeCheckOutline></BadgeCheckOutline> We are a team of aerial photographers with a combined 10 years of drone-piloting experience, breaking into the world of commercial filming. FAA certified and insured, with the Part 107 license, we film, edit, and publish high quality, custom projects for every customer.
       </p>
       <p class="sectioninfotext">
-        <BadgeCheckOutline></BadgeCheckOutline> We work with care, integrity, and maturity, ensuring everything we deliver to the client represents the best that we can offer, and then some.
+        <BadgeCheckOutline></BadgeCheckOutline> We work with care, integrity, and passion, ensuring everything we deliver to our clients represents the best that we can offer, and then some.
       </p>
      </div>
   </div>
@@ -181,6 +167,6 @@
 
 <section class="sectionsok" id="section3">
   <div class="sectioncontent">
-    <Contact></Contact>
+    <Button size="xl"><EnvelopeSolid class="w-6 h-6 me-2" />Send us an email!</Button>
   </div>
 </section>
