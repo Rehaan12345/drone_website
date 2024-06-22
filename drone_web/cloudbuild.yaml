@@ -1,0 +1,24 @@
+# How to make the cloudbuild.yaml file: https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration 
+
+# From Medium article:
+steps:
+ # Build the container image
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'frontendimg', '.']
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['tag', 'frontendimg', 'us-central1-docker.pkg.dev/dronewebnew/droneweb-frontend/frontendimg:latest']
+
+ # Push the container image to Artifact Registry
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'us-central1-docker.pkg.dev/dronewebnew/droneweb-frontend/frontendimg:latest']
+ 
+ # Deploy container to Cloud Run
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args: [
+   'run', 'deploy', 'droneweb-frontend',
+   '--image', 'frontendimg',
+   '--region', 'us-central1']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
