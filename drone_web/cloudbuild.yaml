@@ -17,7 +17,7 @@ steps:
    entrypoint: gcloud
    args: [
    'run', 'deploy', 'droneweb-frontend',
-   '--image', 'frontendimg',
+   '--image', 'us-central1-docker.pkg.dev/dronewebnew/droneweb-frontend/frontendimg:latest',
    '--region', 'us-central1']
 
 options:
