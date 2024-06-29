@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # from sendmail import send_mail, send_alt_mail
+from vidsender import get_vid
+import cloudinary
+import cloudinary.uploader
+from cloudinary.utils import cloudinary_url
+import os
 
 app = FastAPI()
 
@@ -12,7 +17,8 @@ origins = [
     "http://localhost:5173",
     "http://127.0.0.1:8000",
     "http://localhost",
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "https://www.bosdroneworks.com"
 ]
 
 app.add_middleware(
@@ -38,11 +44,7 @@ async def login(email: str, password: str):
     # print(f"Email: {email}\nPassword: {password}")
     return {"email": email, "password": password}
 
-# @app.get("/email/{email_sender}/{subject}/{body}/")
-# async def email(email_sender: str, subject: str, body: str):
-#     # Send the email:
-#     try:
-#         send_mail(email_sender=email_sender, subject=subject, body=body)
-#         return {"email_sender": email_sender, "subject": subject, "body": body, "worked": "worked!"}
-#     except Exception as e: 
-#         return {"email_sender": email_sender, "subject": subject, "body": body, "worked": str(e)}
+@app.get("/getvid")
+async def send_vid():
+    vid = get_vid()
+    return {"vid": vid}

@@ -5,34 +5,22 @@
   $: activeUrl = $page.url.pathname;
   import { DarkMode } from 'flowbite-svelte';
   import { Footer, FooterBrand, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup } from 'flowbite-svelte';
-
   import { onNavigate } from '$app/navigation';
+  import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+  import { inject } from '@vercel/analytics';    
 
-  // onNavigate((navigation) => {
-  //   if (!document.startViewTransition) return;
-
-  //   return new Promise((resolve) => {
-  //     document.startViewTransition(async () => {
-  //       resolve();
-  //       await navigation.complete;
-  //     });
-  //   });
-  // });
+  // injectSpeedInsights();
 
 </script>
 
-<Navbar let:NavContainer color="primary">
-    <NavBrand href="/">
-      <DarkMode />
-      <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">DroneWorks</span>
-    </NavBrand>
-    <NavHamburger />
-    <NavUl {activeUrl}>
-      <NavLi href="/">Home</NavLi>
-      <!-- <NavLi href="/Pricing">Pricing</NavLi> -->
-      <!-- <NavLi href="/Purchase">Purchase</NavLi>
-      <NavLi href="/Signup">Sign Up</NavLi> -->
-    </NavUl>
-  </Navbar>
+<Navbar class="bg-blue-700">
+  <NavBrand href="/">
+    <span class="self-center whitespace-nowrap text-xl font-semibold text-white">DroneWorks</span>
+  </NavBrand>
+  <!-- <NavHamburger/> -->
+  <!-- <NavUl>
+    <NavLi href="/" class="text-white">Home</NavLi>
+  </NavUl> -->
+</Navbar>
 
 <slot></slot>
